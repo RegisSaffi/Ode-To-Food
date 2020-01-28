@@ -1,0 +1,48 @@
+@model OdeToFood.ViewModels.HomeViewModel
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@addTagHelper *, AuthoringTagHelpers 
+@{
+    Layout = "_Layout";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Home</title>
+</head>
+<body>
+<div>
+   
+    <div>
+        
+        <div class="d-flex justify-content-between pt-5 pb-2">
+            <h3>List of all restaurants</h3>
+           
+            <a class="btn btn-info" asp-action="Create" asp-controller="Home">New restaurant</a>
+        
+        </div>
+        <table class="table table-striped">
+            <thead class="thead-dark">
+            <th>ID</th>
+            <th>Name</th>
+            <th>Location</th>
+            <th colspan="3">Action</th>
+            </thead>
+            @* @foreach (var resto in Model) *@
+            @foreach (var resto in Model.Restaurants)
+            {
+                <tr>
+                    <td>@resto.Id.ToString()</td>
+                    <td>@resto.Name</td>
+                    <td>@resto.Location</td>
+                    <td>@Html.ActionLink("Details", "Details", new {id = resto.Id})</td>
+
+                </tr>
+            }
+        </table>
+
+    </div>
+</div>
+</body>
+</html>

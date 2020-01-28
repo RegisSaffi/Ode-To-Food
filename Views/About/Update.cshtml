@@ -1,0 +1,93 @@
+@using OdeToFood.Models
+@model OdeToFood.Models.Restaurant
+
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@addTagHelper *, AuthoringTagHelpers 
+
+@{
+     Layout = "_Layout";
+
+    Restaurant res = ViewBag.data;
+    
+ }
+ 
+ <!DOCTYPE html>
+<html lang="html">
+ <head>
+     <title>Update</title>
+ </head>
+ <body>
+ <div class="row justify-content-center pt-3">
+ <div class="col-lg-5">
+     <h1>Update this restaurant</h1>
+     @*You should change this form and use razor tags*@
+
+     <form asp-action="Update" asp-controller="About" method="post">
+         <div class="form-group">
+             <label asp-for="Name">Name</label>
+             <input type="text" asp-for="Name" class="form-control" value="@res.Name"/>
+             <small aria-invalid="true"></small>
+         </div>
+
+         <div class="form-group">
+             <label asp-for="Location">Location:</label>
+             <input type="text" asp-for="Location" class="form-control" value="@res.Location"/>
+             <small aria-invalid="true"></small>
+         </div>
+         
+          <div class="form-group">
+<select asp-for="@res.Cuisine" class="form-control">
+                 @foreach (CuisineType c in (CuisineType[]) Enum.GetValues(typeof(CuisineType)))
+                                    {
+                                        if (@c==@res.Cuisine)
+                                        {
+                                            <option value="@Convert.ToInt32(c)" selected>@c</option>
+                                        }
+                                        else
+                                        {
+                                            <option value="@Convert.ToInt32(c)">@c</option>
+                                        }
+                                        
+                                    }
+            </select>
+          </div>
+         
+          <div class="form-group">
+         <select asp-for="@res.CuisineDays"class="form-control">
+                          @foreach (CuisineDays c in (CuisineDays[]) Enum.GetValues(typeof(CuisineDays)))
+                                             {
+                                                 if (@c==@res.CuisineDays)
+                                                 {
+                                                     <option value="@Convert.ToInt32(c)" selected>@c</option>
+                                                 }
+                                                 else
+                                                 {
+                                                     <option value="@Convert.ToInt32(c)">@c</option>
+                                                 }
+                                             }
+                     </select>
+          </div>
+
+         <div class="form-group">
+             <label asp-for="Phone">Phone:</label>
+             <input type="text" asp-for="Phone" class="form-control" value="@res.Phone"/>
+             <span asp-validation-for="Phone" class="text-danger"></span>
+         </div>
+         
+         
+         <div class="form-group">
+             <label asp-for="Description">Description:</label>
+             <input type="text" asp-for="Description" class="form-control" value="@res.Description"/>
+             <span asp-validation-for="Description" class="text-danger"></span>
+         </div>
+
+         <div class="form-group">
+                      <input class="btn btn-success" type="submit" value="Update">
+                      <a class="btn btn-danger" asp-action="Index" asp-controller="Home">Cancel</a>
+                  </div>
+         
+     </form>
+ </div>
+ </div>
+ </body>
+ </html>

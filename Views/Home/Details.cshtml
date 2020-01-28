@@ -1,0 +1,42 @@
+@model OdeToFood.Models.Restaurant
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@addTagHelper *, AuthoringTagHelpers 
+@{
+    Layout = "_Layout";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Home</title>
+</head>
+<body>
+
+ <div class="row justify-content-center pt-5 pb-5">
+ <div class="col-lg-5">
+     <div class="card" style="width: 25rem;">
+         <img class="card-img-top" src="https://pngimage.net/wp-content/uploads/2018/06/restaurants-logo-png-3.png" alt="Card image cap">
+         <div class="card-body">
+             <h5 class="card-title">@Model.Name</h5>
+             <p class="card-text">@Model.Description</p>
+         </div>
+         <ul class="list-group list-group-flush">
+             <li class="list-group-item"><b>Cuisine:</b> @Model.Cuisine</li>
+             <li class="list-group-item"><b>Location:</b> @Model.Location</li>
+             <li class="list-group-item"><b>Phone:</b> @Model.Phone</li>
+             <li class="list-group-item"><b>Working days:</b> @Model.CuisineDays</li>
+        
+         </ul>
+         <div class="card-body">
+             <a class="btn btn-info" asp-action="Update" asp-controller="About" asp-route-id="@Model.Id">Update</a>
+             <a class="btn btn-danger ml-2 mr-2" asp-controller="About" asp-action="Delete" asp-route-id="@Model.Id">Delete</a>
+             <a class="btn btn-success" asp-action="Index" asp-controller="Home">All restaurants</a>
+         </div>
+     </div>
+ </div>
+ </div>
+
+
+</body>
+</html>
