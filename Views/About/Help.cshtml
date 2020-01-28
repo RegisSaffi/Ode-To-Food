@@ -1,0 +1,38 @@
+@model OdeToFood.Models.Restaurant
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@addTagHelper *, AuthoringTagHelpers 
+@{
+    Layout = "_Layout";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Home</title>
+</head>
+<body>
+
+<div class="row justify-content-center pt-5 pb-5">
+    <div class="col-lg-5">
+        <div class="card" style="width: 30rem;">
+            <img class="card-img-top" src="https://pngimage.net/wp-content/uploads/2018/06/table-restaurant-png.png" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">About us</h5>
+                <p class="card-text">
+                    
+                    For more information, you call on 0787689692 and on watsup 0786115058
+                </p>
+            </div>
+          
+            <div class="card-body">
+           <a class="btn btn-success" asp-action="Index" asp-controller="Home">Back to home</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+</body>
+</html>

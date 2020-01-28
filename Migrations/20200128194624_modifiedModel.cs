@@ -2,7 +2,7 @@
 
 namespace OdeToFood.Migrations
 {
-    public partial class ModifiedModel : Migration
+    public partial class modifiedModel : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
